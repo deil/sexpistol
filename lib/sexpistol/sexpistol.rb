@@ -47,6 +47,8 @@ class Sexpistol
       mapped = data.map do |item|
         if( item.is_a?(Array))
           to_sexp(item)
+        elsif item.is_a?(String)
+          "\"" + item + "\""
         else
           item.to_s
         end
