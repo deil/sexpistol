@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "deil_sexpistol.gemspec",
     "lib/sexpistol.rb",
     "lib/sexpistol/sexpistol.rb",
     "lib/sexpistol/sexpistol_parser.rb",
