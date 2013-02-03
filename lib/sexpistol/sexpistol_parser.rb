@@ -33,9 +33,7 @@ class SexpistolParser < StringScanner
   
   def fetch_token
     skip(/\s+/)
-    if(eos?)
-      return nil
-    end
+    return nil if(eos?)
 
     @token =
     # Match parentheses
