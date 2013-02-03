@@ -1,42 +1,19 @@
+# encoding: utf-8
+
+require 'rubygems'
 require 'rake'
-require 'rake/testtask'
-require 'rdoc/task'
 
-desc 'Default: run unit tests.'
-task :default => :test
-
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "deil_sexpistol"
-    gemspec.summary = "An S-Expression Parser Library for Ruby. Forked"
-    gemspec.description = "Sexpistol is an easy-to-use S-Expression parser for Ruby. It is fast and has no dependencies."
-    gemspec.email = "aaron@aarongough.com"
-    gemspec.homepage = "http://github.com/aarongough/sexpistol"
-    gemspec.authors = ["Aaron Gough", "Anton Kosyakin"]
-    gemspec.rdoc_options << '--line-numbers' << '--inline-source'
-    gemspec.extra_rdoc_files = ['README.rdoc', 'MIT-LICENSE']
-  end
-rescue LoadError
-  puts "Jeweler not available. Install it with: gem install jeweler"
+require 'jeweler'
+Jeweler::Tasks.new do |gemspec|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gemspec.name = "deil_sexpistol"
+  gemspec.summary = "An S-Expression Parser Library for Ruby. Forked"
+  gemspec.description = "Sexpistol is an easy-to-use S-Expression parser for Ruby. It is fast and has no dependencies."
+  gemspec.email = "aaron@aarongough.com"
+  gemspec.homepage = "http://github.com/aarongough/sexpistol"
+  gemspec.authors = ["Aaron Gough", "Anton Kosyakin"]
+  gemspec.rdoc_options << '--line-numbers' << '--inline-source'
+  gemspec.extra_rdoc_files = ['README.rdoc', 'MIT-LICENSE']
+  #gem.files.exclude 'tmp'
 end
-
-
-desc 'Test sexpistol.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib/*.rb'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
-
-
-desc 'Generate documentation for sexpistol.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Koi'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-  rdoc.rdoc_files.include('app/**/*.rb')
-end
+Jeweler::RubygemsDotOrgTasks.new
