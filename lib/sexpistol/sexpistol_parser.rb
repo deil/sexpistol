@@ -22,9 +22,9 @@ class SexpistolParser < StringScanner
           when '(' then exp << [:quote].concat([parse])
           else exp << [:quote, @token]
           end
-        when String, Fixnum, Float, Symbol 
+        when String, Fixnum, Bignum, Float, Symbol
           exp << @token
-        when nil 
+        when nil
           break
       end
     end
@@ -33,11 +33,13 @@ class SexpistolParser < StringScanner
   
   def fetch_token
     skip(/\s+/)
-    return nil if(eos?)
-    
-    @token = 
+    if(eos?)
+      return nil
+    end
+
+    @token =
     # Match parentheses
-    if scan(/[\(\)]/)      
+    if scan(/[\(\)]/)
       matched
     # Match a string literal
     elsif scan(/"([^"\\]|\\.)*"/)
